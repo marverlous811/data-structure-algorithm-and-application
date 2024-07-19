@@ -1,10 +1,11 @@
-use algorithm_and_application::{random_vec, sort::sort_race};
+use algorithm_and_application::{random_vec, sort::sort_race, sort::SortKind};
 
 fn main() {
-  let sizes = [10, 100, 1000, 10000, 100000, 1000000];
+  let sizes = [10, 100, 1_000, 10_000, 100_000, 1_000_000];
+  let kinds = vec![SortKind::MergeSortOptz, SortKind::QuickSort, SortKind::MergeSort];
   for size in sizes.iter() {
-    let input = random_vec(*size, 0, 10000000);
+    let input = random_vec(*size, 0, 10_000_000);
     println!("sorting a vector of size {}", size);
-    sort_race(input);
+    sort_race(&input, &kinds);
   }
 }

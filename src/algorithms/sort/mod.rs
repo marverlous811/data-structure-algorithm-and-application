@@ -5,15 +5,14 @@ mod merge_sort;
 mod quick_sort;
 
 #[derive(Debug)]
-enum SortKind {
+pub enum SortKind {
   BubbleSort,
   QuickSort,
   MergeSort,
   MergeSortOptz,
 }
 
-pub fn sort_race(input: Vec<i32>) {
-  let kinds = vec![SortKind::MergeSortOptz, SortKind::QuickSort, SortKind::MergeSort];
+pub fn sort_race(input: &Vec<i32>, kinds: &Vec<SortKind>) {
   for kind in kinds.iter() {
     let sort_func = sort_func_factory(kind, input.clone());
     let sort_time = time_measure(sort_func);
