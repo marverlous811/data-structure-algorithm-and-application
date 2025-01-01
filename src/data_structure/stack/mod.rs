@@ -31,6 +31,10 @@ impl<T> Stack<T> {
     self.idx -= 1;
     self.data.pop()
   }
+
+  pub fn is_empty(&self) -> bool {
+    self.idx == 0
+  }
 }
 
 #[cfg(test)]
