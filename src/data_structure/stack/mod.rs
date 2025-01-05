@@ -1,21 +1,21 @@
 pub struct Stack<T> {
   data: Vec<T>,
-  idx: usize,
-  capacity: usize,
+  idx: i32,
+  capacity: i32,
 }
 
 impl<T> Stack<T> {
   pub fn new(cap: usize) -> Self {
     Stack {
       data: Vec::with_capacity(cap),
-      idx: 0,
-      capacity: cap,
+      idx: -1,
+      capacity: cap as i32,
     }
   }
 
   pub fn push(&mut self, data: T) {
     if self.idx >= self.capacity {
-      self.data.reserve_exact(self.capacity);
+      self.data.reserve_exact(self.capacity as usize);
       self.capacity *= 2;
     }
 
@@ -34,6 +34,14 @@ impl<T> Stack<T> {
 
   pub fn is_empty(&self) -> bool {
     self.idx == 0
+  }
+
+  pub fn top(&self) -> Option<&T> {
+    if self.idx < 0 {
+      return None;
+    }
+
+    Some(&self.data[self.idx as usize])
   }
 }
 
