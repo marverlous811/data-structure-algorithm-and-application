@@ -1,3 +1,4 @@
+mod queue;
 mod stack;
 mod text_diff;
 

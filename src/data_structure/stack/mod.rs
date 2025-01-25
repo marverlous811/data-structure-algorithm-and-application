@@ -1,10 +1,16 @@
-pub struct Stack<T> {
+pub struct Stack<T>
+where
+  T: Clone,
+{
   data: Vec<T>,
   idx: i32,
   capacity: i32,
 }
 
-impl<T> Stack<T> {
+impl<T> Stack<T>
+where
+  T: Clone,
+{
   pub fn new(cap: usize) -> Self {
     Stack {
       data: Vec::with_capacity(cap),
@@ -24,7 +30,7 @@ impl<T> Stack<T> {
   }
 
   pub fn pop(&mut self) -> Option<T> {
-    if self.idx == 0 {
+    if self.idx == -1 {
       return None;
     }
 
@@ -43,6 +49,34 @@ impl<T> Stack<T> {
 
     Some(&self.data[self.idx as usize])
   }
+
+  pub fn size(&self) -> usize {
+    self.data.len()
+  }
+
+  pub fn capacity(&self) -> usize {
+    self.capacity as usize
+  }
+}
+
+impl<T> Stack<T>
+where
+  T: Clone,
+{
+  pub fn from_vec(arr: &Vec<T>) -> Self {
+    let mut stack = Self::new(arr.len());
+    arr.iter().for_each(|d| stack.push(d.clone()));
+    stack
+  }
+
+  pub fn flush_to_vec(&mut self) -> Vec<T> {
+    let mut result = vec![];
+    while let Some(data) = self.pop() {
+      result.push(data);
+    }
+
+    result
+  }
 }
 
 #[cfg(test)]
@@ -59,5 +93,21 @@ mod tests {
     assert_eq!(stack.pop(), Some(2));
     assert_eq!(stack.pop(), Some(1));
     assert_eq!(stack.pop(), None);
+  }
+
+  #[test]
+  fn test_stack_by_array() {
+    let data = vec![1, 2, 3, 4, 5];
+    let mut stack = Stack::new(data.len());
+    for num in data.clone() {
+      stack.push(num);
+    }
+
+    let mut result = vec![];
+    while let Some(num) = stack.pop() {
+      result.push(num);
+    }
+
+    assert_eq!(result, vec![5, 4, 3, 2, 1]);
   }
 }

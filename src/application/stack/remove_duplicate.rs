@@ -1,5 +1,3 @@
-use std::{cmp, mem};
-
 struct Idx(Option<usize>);
 
 impl Idx {
