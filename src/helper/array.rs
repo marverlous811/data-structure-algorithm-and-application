@@ -35,7 +35,7 @@ pub fn merge_two_sorted_array(left: &Vec<i32>, right: &Vec<i32>) -> Vec<i32> {
 
 #[cfg(test)]
 mod tests {
-  use crate::merge_two_sorted_array;
+  use super::merge_two_sorted_array;
 
   #[test]
   fn merge_array_with_left_larger() {

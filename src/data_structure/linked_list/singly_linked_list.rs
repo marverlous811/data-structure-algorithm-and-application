@@ -135,7 +135,7 @@ impl SinglyLinkedList {
 
 #[cfg(test)]
 mod test {
-  use crate::SinglyLinkedList;
+  use super::SinglyLinkedList;
 
   #[test]
   fn simple_test() {

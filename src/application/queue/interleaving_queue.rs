@@ -1,4 +1,4 @@
-use crate::{queue::Queue, Stack};
+use crate::data_structure::{queue::Queue, Stack};
 
 pub fn interleaving_queue(queue: &mut Queue<i32>) {
   if queue.size() % 2 != 0 {
@@ -39,7 +39,7 @@ pub fn interleaving_queue(queue: &mut Queue<i32>) {
 
 #[cfg(test)]
 mod test {
-  use crate::queue::Queue;
+  use crate::data_structure::queue::Queue;
 
   use super::interleaving_queue;
 

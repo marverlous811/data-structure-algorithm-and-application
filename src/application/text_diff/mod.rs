@@ -1,5 +1,7 @@
+use crate::algorithms::{lcs_table, reconstruct_elements};
+
 pub fn text_diff_print(file_a: &Vec<String>, file_b: &Vec<String>) {
-  let lcs = crate::reconstruct_elements(file_a, file_b, &crate::lcs_table(file_a, file_b));
+  let lcs = reconstruct_elements(file_a, file_b, &lcs_table(file_a, file_b));
 
   let mut line_a = 0;
   let mut line_b = 0;

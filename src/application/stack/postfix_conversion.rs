@@ -1,4 +1,4 @@
-use crate::Stack;
+use crate::data_structure::Stack;
 
 fn precedence(c: char) -> i32 {
   match c {

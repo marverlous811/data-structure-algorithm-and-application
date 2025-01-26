@@ -1,4 +1,4 @@
-use crate::merge_two_sorted_array;
+use crate::helper::merge_two_sorted_array;
 
 pub fn merge(arr: &mut Vec<i32>, left: usize, mid: usize, right: usize) {
   let left_arr_len = mid - left + 1;

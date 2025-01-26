@@ -1,4 +1,4 @@
-use crate::{duration_as_string, time_measure};
+use crate::helper::{duration_as_string, time_measure};
 
 mod bubble_sort;
 mod merge_sort;

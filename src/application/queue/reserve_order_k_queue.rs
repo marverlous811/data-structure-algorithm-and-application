@@ -1,4 +1,4 @@
-use crate::{queue::Queue, Stack};
+use crate::data_structure::{queue::Queue, Stack};
 
 pub fn reserve_order_k_queue(queue: &mut Queue<i32>, k: usize) {
   if queue.is_empty() || queue.size() < k {
@@ -25,7 +25,7 @@ pub fn reserve_order_k_queue(queue: &mut Queue<i32>, k: usize) {
 
 #[cfg(test)]
 mod test {
-  use crate::queue::Queue;
+  use crate::data_structure::queue::Queue;
 
   use super::reserve_order_k_queue;
 

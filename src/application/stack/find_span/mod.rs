@@ -1,4 +1,4 @@
-use crate::Stack;
+use crate::data_structure::Stack;
 
 pub fn find_span_brute_force(arr: &[i32]) -> Vec<i32> {
   let mut result = vec![1; arr.len()];

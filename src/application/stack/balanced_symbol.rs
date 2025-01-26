@@ -1,4 +1,4 @@
-use crate::Stack;
+use crate::data_structure::Stack;
 
 pub fn is_balanced_symbol(expression: &str) -> bool {
   let mut stack = Stack::new(expression.len());

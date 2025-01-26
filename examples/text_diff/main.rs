@@ -1,6 +1,6 @@
 use std::{env, path::Path};
 
-use algorithm_and_application::read_file_to_vec;
+use algorithm_and_application::{application::text_diff_print, helper::read_file_to_vec};
 
 fn main() {
   let dir = env::current_dir().unwrap();
@@ -10,5 +10,5 @@ fn main() {
   let a = read_file_to_vec(file_a.to_str().unwrap());
   let b = read_file_to_vec(file_b.to_str().unwrap());
 
-  algorithm_and_application::text_diff_print(&a, &b);
+  text_diff_print(&a, &b);
 }

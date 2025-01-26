@@ -1,4 +1,4 @@
-use crate::{queue::Queue, Stack};
+use crate::data_structure::{queue::Queue, Stack};
 
 pub fn check_stack_pairwise_order(stack: &mut Stack<i32>) -> bool {
   let mut queue = Queue::<i32>::new(stack.capacity());
@@ -25,7 +25,8 @@ pub fn check_stack_pairwise_order(stack: &mut Stack<i32>) -> bool {
 
 #[cfg(test)]
 mod test {
-  use crate::Stack;
+
+  use crate::data_structure::Stack;
 
   use super::check_stack_pairwise_order;
 
