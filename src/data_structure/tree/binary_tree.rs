@@ -34,13 +34,29 @@ where
     self
   }
 
-  pub fn append_left(mut self, node: Rc<RefCell<BinaryTreeNode<T>>>) -> Self {
-    self.left = Some(node);
+  pub fn append_left(mut self, node: Option<Rc<RefCell<BinaryTreeNode<T>>>>) -> Self {
+    self.left = node;
     self
   }
 
-  pub fn append_right(mut self, node: Rc<RefCell<BinaryTreeNode<T>>>) -> Self {
-    self.right = Some(node);
+  pub fn append_right(mut self, node: Option<Rc<RefCell<BinaryTreeNode<T>>>>) -> Self {
+    self.right = node;
     self
+  }
+}
+
+pub fn array_to_bst<T>(arr: Vec<T>, start: usize, end: usize) -> Option<Rc<RefCell<BinaryTreeNode<T>>>>
+where
+  T: Debug + Clone,
+{
+  if start >= end {
+    None
+  } else {
+    let mid = (start + end) / 2;
+    let node = BinaryTreeNode::new(arr[mid].clone())
+      .append_left(array_to_bst(arr.clone(), start, mid))
+      .append_right(array_to_bst(arr.clone(), mid + 1, end));
+
+    Some(Rc::new(RefCell::new(node)))
   }
 }

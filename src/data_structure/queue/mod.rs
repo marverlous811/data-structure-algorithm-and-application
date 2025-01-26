@@ -1,12 +1,10 @@
-use std::fmt::Debug;
-
 use super::Stack;
 
 pub struct Queue<T>
 where
-  T: Default + Clone + Debug,
+  T: Clone,
 {
-  data: Vec<T>,
+  data: Vec<Option<T>>,
   capacity: usize,
   front: i32,
   rear: i32,
@@ -15,10 +13,10 @@ where
 
 impl<T> Queue<T>
 where
-  T: Default + Clone + Debug,
+  T: Clone,
 {
   pub fn new(capacity: usize) -> Self {
-    let data = vec![Default::default(); capacity];
+    let data = vec![None; capacity];
 
     Self {
       data,
@@ -47,7 +45,7 @@ where
     }
 
     self.rear = (self.rear + 1) % self.capacity as i32;
-    self.data[self.rear as usize] = data;
+    self.data[self.rear as usize] = Some(data);
 
     if self.front == -1 {
       self.front = self.rear
@@ -72,7 +70,7 @@ where
     }
     self.size -= 1;
 
-    Some(data)
+    data
   }
 
   pub fn resever(&mut self) -> anyhow::Result<()> {
@@ -92,7 +90,7 @@ where
 
 impl<T> Queue<T>
 where
-  T: Default + Clone + Debug,
+  T: Clone,
 {
   pub fn from_vec(arr: &Vec<T>) -> Self {
     let mut queue = Queue::new(arr.len());
