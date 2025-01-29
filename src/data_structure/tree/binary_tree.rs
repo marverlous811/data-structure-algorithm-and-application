@@ -45,6 +45,17 @@ where
   }
 }
 
+pub fn inorder_traversal<T, F>(root: Option<Rc<RefCell<BinaryTreeNode<T>>>>, f: &mut F)
+where
+  T: Debug + Clone,
+  F: FnMut(T),
+{
+  if let Some(node) = root {
+    inorder_traversal(node.borrow().left.clone(), f);
+    f(node.borrow().data.clone());
+    inorder_traversal(node.borrow().right.clone(), f);
+  }
+}
 pub fn array_to_bst<T>(arr: Vec<T>, start: usize, end: usize) -> Option<Rc<RefCell<BinaryTreeNode<T>>>>
 where
   T: Debug + Clone,
@@ -58,5 +69,22 @@ where
       .append_right(array_to_bst(arr.clone(), mid + 1, end));
 
     Some(Rc::new(RefCell::new(node)))
+  }
+}
+
+#[cfg(test)]
+mod test {
+  use super::{array_to_bst, inorder_traversal};
+
+  #[test]
+  fn to_inorder_vec() {
+    let arr = vec![1, 2, 3, 4, 5, 6, 7, 8, 9];
+    let tree = array_to_bst(arr.clone(), 0, arr.len());
+    let mut result = vec![];
+    inorder_traversal(tree, &mut |data: i32| {
+      result.push(data);
+    });
+
+    assert_eq!(result, arr);
   }
 }
