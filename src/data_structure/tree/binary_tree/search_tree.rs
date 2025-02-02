@@ -2,7 +2,7 @@ use std::{cell::RefCell, rc::Rc};
 
 use crate::data_structure::queue::Queue;
 
-use super::binary_tree::BinaryTreeNode;
+use super::node::BinaryTreeNode;
 
 pub fn find_in_binary_tree(root: Option<Rc<RefCell<BinaryTreeNode<i32>>>>, data: i32) -> bool {
   if let Some(root) = root {
@@ -49,7 +49,8 @@ pub fn find_binary_tree_using_level_order(root: Option<Rc<RefCell<BinaryTreeNode
 
 #[cfg(test)]
 mod test {
-  use crate::data_structure::tree::{binary_tree::array_to_bst, search_tree::find_binary_tree_using_level_order};
+
+  use crate::data_structure::tree::binary_tree::{node::array_to_bst, search_tree::find_binary_tree_using_level_order};
 
   use super::find_in_binary_tree;
 

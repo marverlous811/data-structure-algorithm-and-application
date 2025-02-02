@@ -2,7 +2,7 @@ use std::{cell::RefCell, rc::Rc};
 
 use crate::data_structure::queue::Queue;
 
-use super::binary_tree::BinaryTreeNode;
+use super::node::BinaryTreeNode;
 
 pub fn find_max_node(root: Option<Rc<RefCell<BinaryTreeNode<i32>>>>) -> i32 {
   let mut max_val = i32::MIN;
@@ -44,7 +44,7 @@ pub fn find_max_using_level_order(root: Option<Rc<RefCell<BinaryTreeNode<i32>>>>
 mod test {
   use std::{cell::RefCell, rc::Rc};
 
-  use crate::data_structure::tree::{binary_tree::BinaryTreeNode, find_max::find_max_using_level_order};
+  use crate::data_structure::tree::binary_tree::{find_max::find_max_using_level_order, node::BinaryTreeNode};
 
   use super::find_max_node;
 

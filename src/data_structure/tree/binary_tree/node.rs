@@ -1,6 +1,15 @@
 use std::{cell::RefCell, fmt::Debug, rc::Rc};
 
 #[derive(Clone)]
+pub enum TreeNode<T>
+where
+  T: Debug + Clone,
+{
+  Null,
+  Node(Rc<RefCell<BinaryTreeNode<T>>>),
+}
+
+#[derive(Clone)]
 pub struct BinaryTreeNode<T>
 where
   T: Debug + Clone,

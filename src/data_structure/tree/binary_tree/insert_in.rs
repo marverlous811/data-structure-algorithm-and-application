@@ -2,7 +2,7 @@ use std::{cell::RefCell, fmt::Debug, rc::Rc};
 
 use crate::data_structure::queue::Queue;
 
-use super::binary_tree::BinaryTreeNode;
+use super::node::BinaryTreeNode;
 
 pub fn insert_in_binary_tree<T>(
   root: Option<Rc<RefCell<BinaryTreeNode<T>>>>,

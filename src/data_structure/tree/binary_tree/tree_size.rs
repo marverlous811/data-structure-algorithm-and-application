@@ -1,6 +1,6 @@
 use std::{cell::RefCell, fmt::Debug, rc::Rc};
 
-use super::binary_tree::BinaryTreeNode;
+use super::node::BinaryTreeNode;
 
 pub fn binary_tree_size<T>(root: Option<Rc<RefCell<BinaryTreeNode<T>>>>) -> usize
 where
@@ -14,7 +14,7 @@ where
 
 #[cfg(test)]
 mod test {
-  use crate::data_structure::tree::binary_tree::array_to_bst;
+  use crate::data_structure::tree::binary_tree::node::array_to_bst;
 
   use super::binary_tree_size;
 

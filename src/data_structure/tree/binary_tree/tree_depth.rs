@@ -2,7 +2,7 @@ use std::{cell::RefCell, fmt::Debug, rc::Rc};
 
 use crate::data_structure::queue::Queue;
 
-use super::binary_tree::BinaryTreeNode;
+use super::node::{BinaryTreeNode, TreeNode};
 
 pub fn tree_depth<T>(root: Option<Rc<RefCell<BinaryTreeNode<T>>>>) -> usize
 where
@@ -20,15 +20,6 @@ where
     }
     None => 0,
   }
-}
-
-#[derive(Clone)]
-enum TreeNode<T>
-where
-  T: Debug + Clone,
-{
-  Null,
-  Node(Rc<RefCell<BinaryTreeNode<T>>>),
 }
 
 pub fn tree_depth_without_recusive<T>(root: Option<Rc<RefCell<BinaryTreeNode<T>>>>) -> usize
@@ -66,8 +57,8 @@ where
 
 #[cfg(test)]
 mod test {
-  use crate::data_structure::tree::{
-    binary_tree::array_to_bst,
+  use crate::data_structure::tree::binary_tree::{
+    node::array_to_bst,
     tree_depth::{tree_depth, tree_depth_without_recusive},
   };
 

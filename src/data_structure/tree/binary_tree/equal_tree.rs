@@ -1,6 +1,6 @@
 use std::{cell::RefCell, fmt::Debug, rc::Rc};
 
-use super::binary_tree::BinaryTreeNode;
+use super::node::BinaryTreeNode;
 
 pub fn is_tree_equal<T>(
   root1: Option<Rc<RefCell<BinaryTreeNode<T>>>>,
@@ -26,7 +26,7 @@ where
 
 #[cfg(test)]
 mod test {
-  use crate::data_structure::tree::{binary_tree::array_to_bst, equal_tree::is_tree_equal};
+  use crate::data_structure::tree::binary_tree::{equal_tree::is_tree_equal, node::array_to_bst};
 
   #[test]
   pub fn test_equal_tree() {

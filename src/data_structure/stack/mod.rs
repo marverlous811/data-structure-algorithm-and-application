@@ -39,7 +39,7 @@ where
   }
 
   pub fn is_empty(&self) -> bool {
-    self.idx == 0
+    self.idx == -1
   }
 
   pub fn top(&self) -> Option<&T> {
